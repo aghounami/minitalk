@@ -6,7 +6,7 @@
 /*   By: aghounam <aghounam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:06:17 by aghounam          #+#    #+#             */
-/*   Updated: 2024/01/30 14:59:49 by aghounam         ###   ########.fr       */
+/*   Updated: 2024/01/31 20:15:15 by aghounam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,8 @@ void	handler(int sig, siginfo_t *info, void *context);
 void	send_binary(char c, pid_t srv_pid);
 int		ft_isdigit(int c);
 int		ft_atoi(const char *str);
+void	error_exit(void);
+void	message_error(char *s);
+int		is_valid_integer(char *str);
 
 #endif

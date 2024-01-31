@@ -6,7 +6,7 @@
 /*   By: aghounam <aghounam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:05:55 by aghounam          #+#    #+#             */
-/*   Updated: 2024/01/30 15:10:31 by aghounam         ###   ########.fr       */
+/*   Updated: 2024/01/31 20:12:35 by aghounam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	send_binary(char c, pid_t srv_pid)
 {
 	int	i;
 
-	i = 31;
+	i = 7;
 	while (i >= 0)
 	{
 		if (((c >> i) & 1) == 0)
@@ -37,18 +37,10 @@ void	send_binary(char c, pid_t srv_pid)
 void	handle(int sig)
 {
 	if (sig == SIGUSR1)
-		ft_printf("message recived\n");
-}
-
-int	is_valid_integer(char *str)
-{
-	while (*str)
 	{
-		if (!ft_isdigit(*str))
-			return (0);
-		str++;
+		ft_printf("message received\n");
+		exit (0);
 	}
-	return (1);
 }
 
 int	main(int argc, char *argv[])
@@ -65,6 +57,8 @@ int	main(int argc, char *argv[])
 	}
 	signal(SIGUSR1, &handle);
 	srv_pid = ft_atoi(argv[1]);
+	if (srv_pid == 0)
+		message_error("invalid pid");
 	str = argv[2];
 	while (str[i])
 	{

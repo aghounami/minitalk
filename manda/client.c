@@ -6,17 +6,11 @@
 /*   By: aghounam <aghounam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:05:55 by aghounam          #+#    #+#             */
-/*   Updated: 2024/01/23 21:20:14 by aghounam         ###   ########.fr       */
+/*   Updated: 2024/01/31 20:37:51 by aghounam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
-void	error_exit(void)
-{
-	write(1, "pid incorrect\n", 14);
-	exit(1);
-}
 
 void	send_binary(char c, pid_t srv_pid)
 {
@@ -40,17 +34,6 @@ void	send_binary(char c, pid_t srv_pid)
 	}
 }
 
-int	is_valid_integer(char *str)
-{
-	while (*str)
-	{
-		if (!ft_isdigit(*str))
-			return (0);
-		str++;
-	}
-	return (1);
-}
-
 int	main(int argc, char *argv[])
 {
 	pid_t	srv_pid;
@@ -64,6 +47,8 @@ int	main(int argc, char *argv[])
 		return (0);
 	}
 	srv_pid = ft_atoi(argv[1]);
+	if (srv_pid == 1 || srv_pid == 0)
+		message_error("incorrect pid");
 	str = argv[2];
 	while (str[i])
 	{

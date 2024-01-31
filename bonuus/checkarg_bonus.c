@@ -6,7 +6,7 @@
 /*   By: aghounam <aghounam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 20:18:46 by aghounam          #+#    #+#             */
-/*   Updated: 2024/01/23 21:21:36 by aghounam         ###   ########.fr       */
+/*   Updated: 2024/01/31 20:12:15 by aghounam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,25 @@ int	ft_atoi(const char *str)
 
 void	error_exit(void)
 {
-	ft_printf("Error\n");
+	ft_printf("incorrect pid\n");
 	exit(1);
+}
+
+void	message_error(char *s)
+{
+	ft_printf("%s\n", s);
+	exit (1);
+}
+
+int	is_valid_integer(char *str)
+{
+	if (*str == '+' || *str == '-')
+		str++;
+	while (*str)
+	{
+		if (!ft_isdigit(*str))
+			return (0);
+		str++;
+	}
+	return (1);
 }

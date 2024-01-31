@@ -6,7 +6,7 @@
 /*   By: aghounam <aghounam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:05:50 by aghounam          #+#    #+#             */
-/*   Updated: 2024/01/30 15:04:24 by aghounam         ###   ########.fr       */
+/*   Updated: 2024/01/31 20:37:44 by aghounam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,10 @@ int	main(void)
 
 	sa.sa_sigaction = &handler;
 	sa.sa_flags = SA_SIGINFO;
-	sigaction(SIGUSR1, &sa, NULL);
-	sigaction(SIGUSR2, &sa, NULL);
 	ft_printf("server pid : %d\n", getpid());
 	while (1)
-		pause();
+	{
+		sigaction(SIGUSR1, &sa, NULL);
+		sigaction(SIGUSR2, &sa, NULL);
+	}
 }
